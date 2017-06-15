@@ -3,9 +3,24 @@
  */
 var http = require('http');
 var express = require('express');
-var config = require('./config/config.json')
+var config = require('./config.json')
 var db = require('./db/db_connector');
+var bodyParser = require('body-parser');
 var app = express();
+var expressJWT = require('express-jwt');
+
+
+// Bodyparser om informatie uit een post-request te kunnen verwerken in de logica van endpoints.
+app.use(bodyParser.urlencoded({ 'extended': 'true' }));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
+
+//Laat de server gebruik maken van JWT, haal de secret key op uit config.
+app.use(expressJWT({
+    secret: config.secretkey
+}).unless({
+    path: ['/api/v1/login']
+}));
 
 //Hier wordt de port opgehaald uit de config.json
 app.set('PORT', config.webPort);

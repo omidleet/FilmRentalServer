@@ -3,5 +3,7 @@
   "dbPassword": "secret",
   "dbSchema": "1076",
   "dbServer": "146.185.130.82",
-  "webPort": "9000"
+  "webPort": "9000",
+  "dbPort": "3306",
+  "secretkey": "ditiseenlangekeyoftochniet"
 }

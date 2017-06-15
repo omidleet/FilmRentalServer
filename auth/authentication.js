@@ -2,42 +2,36 @@
  * Created by jordanh2os on 15/06/2017.
  */
 
-var settings = require('../config/config.json');
+var settings = require('../config.json');
 const moment = require('moment');
 const jwt = require('jwt-simple');
 
-//
-// Encode (van username naar token)
-//
+// encode (username naar token)
 function encodeToken(username) {
-    const playload = {
-        exp: moment().add(2, 'days').unix(),
-        iat: moment().unix(),
+    const payload = {
+        exp: moment().add(2, 'days').unix,
+        iat: moment().unix,
         sub: username
     };
-    return jwt.encode(playload, settings.secretkey);
+    return jwt.encode(payload, settings.secretkey);
 }
 
-//
-// Decode (van token naar username)
-//
+// decode (token naar username)
 function decodeToken(token, cb) {
-
-    try {
+    try{
         const payload = jwt.decode(token, settings.secretkey);
 
-        // Check if the token has expired. To do: Trigger issue in db ..
+        // check if token has expired
         const now = moment().unix();
 
-        // Check if the token has expired
-        if (now > payload.exp) {
+        if (now > payload.exp){
             console.log('Token has expired.');
         }
 
         // Return
         cb(null, payload);
 
-    } catch (err) {
+    } catch (err){
         cb(err, null);
     }
 }
@@ -45,4 +39,4 @@ function decodeToken(token, cb) {
 module.exports = {
     encodeToken,
     decodeToken
-};
+}
