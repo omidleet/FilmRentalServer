@@ -4,21 +4,25 @@
 var mysql = require('mysql');
 var config = require('../config');
 
-var pool = mysql.createPool({
-    connectionLimit : 25,
-    host : config.dbHost,
-    user : config.dbUser,
-    password : config.dbPassword,
-    database : config.dbDatabase,
-    port : config.dbPort
+var pool  = mysql.createPool( {
+    host: process.env.DB_HOST || config.dbServer,
+    user: process.env.DB_USER || config.dBUsername,
+    password: process.env.DB_PASSWORD || config.dbPassword,
+    database: process.env.DB_DATABASE || config.dbSchema,
+    debug: false
 });
 
-pool.getConnection(function(err, conn){
-    if (err){
-        console.log(err + "It doesn't work.");
+
+
+pool.getConnection(function (err, connection) {
+    if (err) {
+        console.error("Couldn't connect to database " + config.dbSchema + " on " + config.dbServer + ": " + err.message + ".");
+        return;
     } else {
-        console.log("Connected to database " + config.dbDatabase + " with portnumber " + config.dbPort + '.');
+        console.log("Connected to database " + config.dbSchema + " on " + config.dbServer + ".");
+        connection.release();
     }
 });
+
 
 module.exports = pool;

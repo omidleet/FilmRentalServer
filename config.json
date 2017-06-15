@@ -1,8 +1,7 @@
 {
-  "dbDatabase": "1076",
-  "dbHost":"Localhost",
-  "dbPort" : "3306",
-  "dbUser":"1076",
-  "dbPassword":"secret",
-  "webPort":"9000"
+  "dBUsername": "1076",
+  "dbPassword": "secret",
+  "dbSchema": "1076",
+  "dbServer": "146.185.130.82",
+  "webPort": "9000"
 }
