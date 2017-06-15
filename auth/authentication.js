@@ -1,5 +1,5 @@
 /**
- * Created by dkroeske on 07/05/2017.
+ * Created by jordanh2os on 15/06/2017.
  */
 
 var settings = require('../config/config.json');

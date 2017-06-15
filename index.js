@@ -3,7 +3,7 @@
  */
 var http = require('http');
 var express = require('express');
-var config = require('./config.json')
+var config = require('./config/config.json')
 var db = require('./db/db_connector');
 var app = express();
 
@@ -24,6 +24,7 @@ app.get('*', function(req, res, next){
 });
 
 app.use('/api/v1', require('./routes/routes_api_v1_film'));
+app.use('/api/v1', require('./routes/routes_api_v1_login'));
 
 // Fallback - als geen enkele andere route slaagt wordt deze uitgevoerd.
 app.use('*', function(req, res) {

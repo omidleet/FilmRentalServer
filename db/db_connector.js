@@ -2,7 +2,7 @@
  * Created by bummybomo on 13-6-2017.
  */
 var mysql = require('mysql');
-var config = require('../config');
+var config = require('../config/config');
 
 var pool  = mysql.createPool( {
     host: process.env.DB_HOST || config.dbServer,
