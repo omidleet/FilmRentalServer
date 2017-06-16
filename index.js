@@ -40,6 +40,7 @@ app.get('*', function(req, res, next){
 
 app.use('/api/v1', require('./routes/routes_api_v1_film'));
 app.use('/api/v1', require('./routes/routes_api_v1_login'));
+app.use('/api/v1', require('./routes/routes_api_v1_register'));
 
 // Fallback - als geen enkele andere route slaagt wordt deze uitgevoerd.
 app.use('*', function(req, res) {
