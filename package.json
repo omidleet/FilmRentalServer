@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start" : "node index.js",
     "test": "node index.js"
   },
-  "author": "Omid Noor",
+  "author": "Omid Noor & Jordan Waters",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
