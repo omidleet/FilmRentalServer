@@ -76,5 +76,60 @@ router.post('/rentals/:customer_id/:inventory_id', function(req, res) {
 });
 
 
+//
+// Wijzig bestaande uitlening voor de gegeven gebruiker van het exemplaar megegeven inventoryid
+router.put('/rentals/:customer_id/:inventory_id', function(req, res) {
+
+    var customer_id = req.params.customer_id;
+    var inventory_id = req.params.inventory_id;
+
+    var returndate = req.body.return_date;
+    var lastupdate = returndate;
+
+    var query = {
+        sql: 'UPDATE `rental` SET return_date=?, last_update=?  WHERE customer_id=? AND inventory_id=?',
+        values: [returndate, lastupdate, customer_id, inventory_id],
+        timeout: 2000 // 2secs
+    };
+
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    pool.query(query, function(error, rows, fields) {
+        if (error) {
+            res.status(401).json(error);
+        } else {
+            res.status(200).json({ result: rows });
+        };
+    });
+});
+
+
+//
+// Verwijder bestaande uitlening voor de gegeven gebruiker van het exemplaar met gegeven inventory id.
+
+router.delete('/rentals/:customer_id/:inventory_id', function(req, res) {
+
+    var customer_id = req.params.customer_id;
+    var inventory_id = req.params.inventory_id;
+
+    var query = {
+        sql: 'DELETE FROM `rental` WHERE customer_id=? AND inventory_id',
+        values: [customer_id, inventory_id],
+        timeout: 2000 // 2secs
+    };
+
+    console.log('Onze query: ' + query.sql);
+
+    res.contentType('application/json');
+    pool.query(query, function(error, rows, fields) {
+        if (error) {
+            res.status(401).json(error);
+        } else {
+            res.status(200).json({ result: rows });
+        };
+    });
+});
+
 module.exports = router;
 
