@@ -1,9 +1,9 @@
 {
   "name": "mo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./FilmRentalServer/index.js",
   "scripts": {
-    "test": "node index.js"
+    "start": "node ./FilmRentalServer/index.js"
   },
   "author": "Omid Noor",
   "license": "ISC",
