@@ -6,7 +6,7 @@ var router = express.Router();
 var pool = require('../db/db_connector');
 
 //Functie om alle films op te halen of op ID
-router.get('/film/:film_id?', function (req,res,next) {
+router.get('/films/:film_id?', function (req,res,next) {
     var film_id = req.params.film_id;
     var query_str;
 

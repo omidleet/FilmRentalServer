@@ -38,9 +38,10 @@ app.get('*', function(req, res, next){
     next();
 });
 
-app.use('/api/v1', require('./routes/routes_api_v1_film'));
+app.use('/api/v1', require('./routes/routes_api_v1_films'));
 app.use('/api/v1', require('./routes/routes_api_v1_login'));
 app.use('/api/v1', require('./routes/routes_api_v1_register'));
+app.use('/api/v1', require('./routes/routes_api_v1_rentals'));
 
 // Fallback - als geen enkele andere route slaagt wordt deze uitgevoerd.
 app.use('*', function(req, res) {
