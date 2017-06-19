@@ -27,11 +27,6 @@ app.set('PORT', config.webPort);
 var port = process.env.PORT || app.get('PORT');
 
 
-//Log methode voor port
-app.listen(port, function(){
-    console.log('This app is connected to port: ' + port);
-});
-
 //Log methode voor api requests
 app.get('*', function(req, res, next){
     console.log(req.method + " " + req.url);
@@ -57,10 +52,9 @@ app.get('/about', function(req, res){
 });
 
 
-
-
-
-
-
+//Log methode voor port
+app.listen(port, function(){
+    console.log('This app is connected to port: ' + port);
+});
 
 module.exports = app;
