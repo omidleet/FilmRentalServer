@@ -13,7 +13,7 @@ var pool  = mysql.createPool( {
 });
 
 
-
+//connectie proberen te maken
 pool.getConnection(function (err, connection) {
     if (err) {
         console.error("Couldn't connect to database " + config.dbSchema + " on " + config.dbServer + ": " + err.message + ".");
