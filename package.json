@@ -1,9 +1,10 @@
 {
   "name": "mo",
   "version": "1.0.0",
-  "main": "./FilmRentalServer/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./FilmRentalServer/index.js"
+    "test" : "echo \"Error: no test specified\"&& exit 1",
+    "start": "node index.js"
   },
   "author": "Omid Noor",
   "license": "ISC",
@@ -21,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omidleet/FilmRentalServer.git"
+    "url": "git+https://github.com/omidleet/FilmRentalServer"
   },
   "bugs": {
     "url": "https://github.com/omidleet/FilmRentalServer/issues"
