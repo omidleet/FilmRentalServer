@@ -36,7 +36,7 @@ router.post('/register', function (req,res) {
 
     console.log(query_string);
 
-
+    //Kijkt of de connectie werkt, anders gooit die een error
     pool.getConnection(function (err, connection) {
         if (err) {
             throw err

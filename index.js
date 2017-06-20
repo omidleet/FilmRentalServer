@@ -11,9 +11,9 @@ var expressJWT = require('express-jwt');
 
 
 // Bodyparser om informatie uit een post-request te kunnen verwerken in de logica van endpoints.
-app.use(bodyParser.urlencoded({ 'extended': 'true' }));
+app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
+app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 
 //Laat de server gebruik maken van JWT, haal de secret key op uit config.
 app.use(expressJWT({
@@ -28,11 +28,12 @@ var port = process.env.PORT || app.get('PORT');
 
 
 //Log methode voor api requests
-app.get('*', function(req, res, next){
+app.get('*', function (req, res, next) {
     console.log(req.method + " " + req.url);
     next();
 });
 
+//Gebruik maken van de routes
 app.use('/api/v1', require('./routes/routes_api_v1_films'));
 app.use('/api/v1', require('./routes/routes_api_v1_login'));
 app.use('/api/v1', require('./routes/routes_api_v1_register'));
@@ -40,12 +41,12 @@ app.use('/api/v1', require('./routes/routes_api_v1_rentals'));
 
 
 //Endpoint voor about
-app.get('/about', function(req, res){
+app.get('/about', function (req, res) {
     res.send('Deze server wordt gemaakt voor Programmeren 4 tentamen.');
 });
 
 // Fallback - als geen enkele andere route slaagt wordt deze uitgevoerd.
-app.use('*', function(req, res) {
+app.use('*', function (req, res) {
     res.status(400);
     res.json({
         'ERROR': 'Deze URL is niet beschikbaar.'
@@ -54,7 +55,7 @@ app.use('*', function(req, res) {
 
 
 //Log methode voor port
-app.listen(port, function(){
+app.listen(port, function () {
     console.log('This app is connected to port: ' + port);
 });
 

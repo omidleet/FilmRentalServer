@@ -50,6 +50,7 @@ router.post('/rentals/:customer_id/:inventory_id', function(req, res) {
         last_update: req.body.rental_date,
     };
 
+    //INSERT de values in de database
     var query_string = "INSERT INTO rental VALUES ('" +
     rental.rental_id + "', '" +
     rental.rental_date + "', '" +
