@@ -38,17 +38,18 @@ app.use('/api/v1', require('./routes/routes_api_v1_login'));
 app.use('/api/v1', require('./routes/routes_api_v1_register'));
 app.use('/api/v1', require('./routes/routes_api_v1_rentals'));
 
+
+//Endpoint voor about
+app.get('/about', function(req, res){
+    res.send('Deze server wordt gemaakt voor Programmeren 4 tentamen.');
+});
+
 // Fallback - als geen enkele andere route slaagt wordt deze uitgevoerd.
 app.use('*', function(req, res) {
     res.status(400);
     res.json({
         'ERROR': 'Deze URL is niet beschikbaar.'
     });
-});
-
-//Endpoint voor about
-app.get('/about', function(req, res){
-    res.send('Deze server wordt gemaakt voor Programmeren 4 tentamen.');
 });
 
 

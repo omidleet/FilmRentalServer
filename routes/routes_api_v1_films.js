@@ -27,7 +27,7 @@ router.get('/films/:film_id?', function (req,res,next) {
             if (err) {
                 throw err
             }
-            res.status(200).json(rows);
+            res.status(200).json({"items" : rows});
         })
     });
 });
